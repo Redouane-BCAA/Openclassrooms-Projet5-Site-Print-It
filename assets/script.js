@@ -21,7 +21,6 @@ let slides = [
 const bannerImage = document.querySelector(".banner-img");
 const bannerTitle = document.querySelector("#banner>p")
 
-
 const leftArrow = document.querySelector(".arrow_left")
 const rightArrow = document.querySelector(".arrow_right")
 
@@ -52,7 +51,7 @@ for ( let i = 0; i < slides.length; i++) {
 	//création de la variable dotselect et qui est égal à tout les éléments qui ont la classe ".dot"
 	// attribution de la classe "dot_selected" au premier élément du tableau (slides)
 let dotselect = document.querySelectorAll(".dot")
-dotselect[0].classList.add("dot_selected")
+dotselect[i].classList.add("dot_selected")
 
 //Fonction qui affiche le slide et les source des images et des tag line
 function showSlide() {
@@ -60,31 +59,40 @@ function showSlide() {
 	bannerTitle.innerHTML = slides[i].tagLine;
 }
 
+// Function pour slide de droite à gauche sur left arrow
 function previousSlide(){	
-	// si i est inférieur à 0 alors on revient au dernier slide
-	if (i < 0) {
-		i = slides.length - 1
-
+	// On supprime la classe "dot_selected" du dot actuel
+	dotselect[i].classList.remove("dot_selected");
+	// si i est inférieur ou égal à 0 alors on revient au dernier slide
+	if (i <= 0) {
+		i = slides.length - 1;
 	} 
 	else {
 		// sinon on décrémente i
 		i--			
 	}	
+	// On ajoute la classe "dot_selected" au nouveau dot correspondant au slide affiché
+	dotselect[i].classList.add("dot_selected");
 	// on appelle la fonction qui affiche le slide
 	showSlide()
+
 }
 
+// Function pour slide de gauche à droite sur right arrow
+
  function nextSlide(){
-	// si i est supérieur à la longueur du tableau slides alors on revient au premier slide
-	if (i > slides.length - 1) {
+	// On supprime la classe "dot_selected" du dot actuel
+	dotselect[i].classList.remove("dot_selected");
+	// si i est supérieur ou égal à la longueur du tableau slides alors on revient au premier slide
+	if (i >= slides.length - 1) {
 		i = 0
 	}
 	else {
 		// sinon on incrémente i
 		i++
 	}
+	// On ajoute la classe "dot_selected" au nouveau dot correspondant au slide affiché
+	dotselect[i].classList.add("dot_selected");
 	// on appelle la fonction qui affiche le slide
 	showSlide()
-	
-
 }

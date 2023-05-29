@@ -26,11 +26,11 @@ const rightArrow = document.querySelector(".arrow_right")
 
 let i = 0;
 
-// STEP 2 OPC : appeler les fonction au click sur les flèche avec eventlistener
+// appeler les fonction au click sur les flèche avec eventlistener
 leftArrow.addEventListener("click", previousSlide)
 rightArrow.addEventListener("click", nextSlide)
 
-// STEP 3 OPC : Ajout bullet points 
+// Ajout bullet points 
 
 //variable dotsDiv est l'élément qui a la classe ".dots"
 const dotsDiv = document.querySelector(".dots")
@@ -45,15 +45,12 @@ for ( let i = 0; i < slides.length; i++) {
 	dotsDiv.appendChild(dot)
 }
 
-	//Mise en place de la dot selecte en rajoutant la classe avec classList.add 
-	// !!!!Problème ici tous séléctionné si ajout [0] les autres disparaissent !!!!!
-	//problème résolus en faisant une variable qu'on peut traduire part :
-	//création de la variable dotselect et qui est égal à tout les éléments qui ont la classe ".dot"
-	// attribution de la classe "dot_selected" au premier élément du tableau (slides)
+//Mise en place de la dot selecte en rajoutant la classe avec classList.add 
+//attribution de la classe "dot_selected" aux éléments du tableau (slides)
 let dotselect = document.querySelectorAll(".dot")
 dotselect[i].classList.add("dot_selected")
 
-//Fonction qui affiche le slide et les source des images et des tag line
+// Fonction qui affiche le slide et les source des images et des tag line
 function showSlide() {
 	bannerImage.src = `./assets/images/slideshow/${slides[i].image}`;
 	bannerTitle.innerHTML = slides[i].tagLine;
@@ -73,7 +70,7 @@ function previousSlide(){
 	}	
 	// On ajoute la classe "dot_selected" au nouveau dot correspondant au slide affiché
 	dotselect[i].classList.add("dot_selected");
-	// on appelle la fonction qui affiche le slide
+	// on appelle la fonction qui affiche les éléments du slide
 	showSlide()
 
 }
@@ -93,6 +90,6 @@ function previousSlide(){
 	}
 	// On ajoute la classe "dot_selected" au nouveau dot correspondant au slide affiché
 	dotselect[i].classList.add("dot_selected");
-	// on appelle la fonction qui affiche le slide
+	// on appelle la fonction qui affiche les éléments du slide
 	showSlide()
 }
